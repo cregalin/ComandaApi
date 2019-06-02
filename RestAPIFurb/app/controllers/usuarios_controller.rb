@@ -17,7 +17,7 @@ class UsuariosController < ApplicationController
         if usuario.save
            render json: usuario, status: :ok
         else
-           render json: usuario.erros, status: :unprocessable_entity
+           render json: usuario.errors, status: :unprocessable_entity
         end
     end
 
@@ -26,7 +26,7 @@ class UsuariosController < ApplicationController
         if usuario.update_attributes(usuario_params)
             render json: { email: usuario[:email], senha: usuario[:senha] }, status: :ok
         else 
-            render json: { error: {text: "Usuário não atualizado", data: usuario.erros } }, status: :unprocessable_entity
+            render json: { error: {text: "Usuário não atualizado", data: usuario.errors } }, status: :unprocessable_entity
         end   
         
         rescue ActiveRecord::RecordNotFound

@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20190602030218) do
 
-  create_table "comanda", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comandas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "produtos", limit: 200
     t.decimal "valortotal", precision: 10, scale: 2
     t.bigint "usuario_id"
-    t.index ["usuario_id"], name: "index_comanda_on_usuario_id"
+    t.index ["usuario_id"], name: "index_comandas_on_usuario_id"
   end
 
   create_table "usuarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -24,5 +24,5 @@ ActiveRecord::Schema.define(version: 20190602030218) do
     t.string "senha", limit: 100
   end
 
-  add_foreign_key "comanda", "usuarios"
+  add_foreign_key "comandas", "usuarios"
 end
