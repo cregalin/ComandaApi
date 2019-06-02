@@ -9,9 +9,10 @@ class UsuariosController < ApplicationController
 	def show
         usuario = Usuario.find(params[:id])
         render json: usuario, status: :ok
-        #verificar tratamento quando o usuário não é encontrado
-    end
 
+        rescue ActiveRecord::RecordNotFound
+            render json: { error: { text: "Usuário não encontrado" } }, status: :not_found  
+    end
     #Cria um novo usuário
     def create
         usuario = Usuario.new(usuario_params)
@@ -27,7 +28,6 @@ class UsuariosController < ApplicationController
         usuario = Usuario.find(params[:id])
         if usuario.update_attributes(usuario_params)
             render json: { email: usuario[:email], senha: usuario[:senha] }, status: :ok
-        
         else 
             render json: { error: {text: "Usuário não atualizado", data: usuario.erros } }, status: :unprocessable_entity
         end   
@@ -41,12 +41,10 @@ class UsuariosController < ApplicationController
         usuario = Usuario.find_by(find_by)  
         #passar body     
         if usuario.present?
-            usuario.destroy
-            render json: { success:{ text: "Usuário removido" }}, status: :ok  
-        else
-            render json: { success:{ text: "Usuário não encontrado" }}, status: :not_found  
+           usuario.destroy
+           render json: { success:{ text: "Usuário removido" }}, status: :ok  
         end
-        
+
         rescue ActiveRecord::RecordNotFound
             render json: { error: { text: "Usuário não encontrado" } }, status: :not_found  
     end
