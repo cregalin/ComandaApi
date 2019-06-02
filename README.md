@@ -1,6 +1,6 @@
 # ComandaAPI :notebook:
 
-Esta é uma simples API para cadastro de comandas e usuários. Desenvolvida em ruby, utizando o framework Ruby on Rails.
+Esta é uma simples API para cadastro de comandas e usuários. Desenvolvida em ruby, utlizando o framework Ruby on Rails.
 
 
 ## Do que você vai precisar :point_down:
