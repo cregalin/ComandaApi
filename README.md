@@ -2,25 +2,57 @@
 
 Esta é uma simples API para cadastro de comandas e usuários. Desenvolvida em ruby, utizando o framework Ruby on Rails.
 
-Ruby version
 
+## Do que você vai precisar
+
+Ruby versão: 
+```
 2.3.3
+```
 
-Rails version
-
+Rails versão:
+```
 5.1.7
+```
+Banco de Dados:
+```
+MariaDB 
+```
 
-Banco de Dados
-MariaDB
-versão?
+## Bora rodar esse projeto?
 
-Configurações
+1. Primerimanete, altere o arquivo _database.yml_, com os dados para a conexão do seu banco de dados.
 
-Criar a database
+```
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  host: <seu host>
+  username: <seu username>
+  password: <sua senha>
+  
+```
+
+2. Ainda no mesmo arquivo  _database.yml_, nos ambientes, caso se você for rodar localmente, você pode alterar apenas o ambiente _development_. Coloque o nome da database que você deseja que seja usada para esse projeto:
+
+```
+development:
+  <<: *default
+  database: <sua_database>
+  
+```
+
+3. Rodar migrations para a crição das tabelas na database:
+```
 rake db:migrate
+```
+4. Iniciar o projeto
 
-Rodar o projeto
+```
 rails s
+```
 
-Link para a documentão(Ainda não está pronta)
+Prontinho, agora é só começar a fazer requisições para a API. :bowtie:
+
+Link para a documentação(Ainda não está pronta :squirrel:) 
 
