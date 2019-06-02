@@ -1,11 +1,9 @@
 class UsuariosController < ApplicationController   
-    #Listar todos os  usuários
     def index
         usuarios = Usuario.all
         render json: usuarios, status: :ok
     end
 
-    # Listar usuários passando ID 
 	def show
         usuario = Usuario.find(params[:id])
         render json: usuario, status: :ok
@@ -13,7 +11,7 @@ class UsuariosController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             render json: { error: { text: "Usuário não encontrado" } }, status: :not_found  
     end
-    #Cria um novo usuário
+
     def create
         usuario = Usuario.new(usuario_params)
         if usuario.save
@@ -23,7 +21,6 @@ class UsuariosController < ApplicationController
         end
     end
 
-    #Atualiza um novo usuário
     def update
         usuario = Usuario.find(params[:id])
         if usuario.update_attributes(usuario_params)
@@ -39,7 +36,6 @@ class UsuariosController < ApplicationController
     def destroy
         find_by = params[:id].present? ? {id: params[:id]} : {email: params[:email] }
         usuario = Usuario.find_by(find_by)  
-        #passar body     
         if usuario.present?
            usuario.destroy
            render json: { success:{ text: "Usuário removido" }}, status: :ok  
