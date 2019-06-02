@@ -1,4 +1,4 @@
-class RestaurantManagerController < ApplicationController  
+class ComandaController < ApplicationController  
     def index
     end
 
