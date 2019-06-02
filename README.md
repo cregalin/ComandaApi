@@ -10,6 +10,10 @@ Rails version
 
 5.1.7
 
+Banco de Dados
+MariaDB
+versão?
+
 Configurações
 
 Criar a database
