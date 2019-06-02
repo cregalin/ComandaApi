@@ -1,0 +1,2 @@
+class RestaurantManager < ApplicationRecord
+end
