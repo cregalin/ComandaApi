@@ -21,7 +21,7 @@ MariaDB
 
 ## Bora rodar esse projeto? :ok_woman:
 
-1. Primerimanete, altere o arquivo _database.yml_, com os dados para a conexão do seu banco de dados.
+1. Primeiramente, altere o arquivo _database.yml_, com os dados para a conexão do seu banco de dados.
 
 ```
 default: &default
@@ -33,12 +33,12 @@ default: &default
   
 ```
 
-2. Ainda no mesmo arquivo  _database.yml_, nos ambientes, caso se você for rodar localmente, você pode alterar apenas o ambiente _development_. Coloque o nome da database que você deseja que seja usada para esse projeto:
+2. Agora você precisa alterar o nome da database, para rodar o projeto. Ainda no mesmo arquivo  _database.yml_, nos ambientes, caso você for rodar localmente, você pode alterar apenas o ambiente _development_.
 
 ```
 development:
   <<: *default
-  database: <sua_database>
+  database: <sua database>
   
 ```
 
