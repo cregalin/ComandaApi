@@ -1,9 +1,9 @@
-# ComandaAPI
+# ComandaAPI :notebook:
 
 Esta é uma simples API para cadastro de comandas e usuários. Desenvolvida em ruby, utizando o framework Ruby on Rails.
 
 
-## Do que você vai precisar
+## Do que você vai precisar :point_down:
 
 Ruby versão: 
 ```
@@ -19,7 +19,7 @@ Banco de Dados:
 MariaDB 
 ```
 
-## Bora rodar esse projeto?
+## Bora rodar esse projeto? :ok_woman:
 
 1. Primerimanete, altere o arquivo _database.yml_, com os dados para a conexão do seu banco de dados.
 
@@ -52,7 +52,7 @@ rake db:migrate
 rails s
 ```
 
-Prontinho, agora é só começar a fazer requisições para a API. :bowtie:
+Prontinho, agora é só começar a fazer requisições para os métodos diponíveis na API. :bowtie:
 
 Link para a documentação(Ainda não está pronta :squirrel:) 
 
