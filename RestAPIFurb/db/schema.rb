@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20190602030218) do
 
-  create_table "comandas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comandas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "produtos", limit: 200
     t.decimal "valortotal", precision: 10, scale: 2
     t.bigint "usuario_id"
     t.index ["usuario_id"], name: "index_comandas_on_usuario_id"
   end
 
-  create_table "usuarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "usuarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", limit: 50
     t.string "senha", limit: 100
   end
