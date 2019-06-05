@@ -4,7 +4,7 @@ describe 'RestAPIFurb API' do
   
   path '/usuarios' do
 	get 'Recupera todos os usuários' do
-      tags 'GETs Usuários'
+      tags 'GET Usuários'
       produces 'application/json'
       response '200', 'Usuários encontrados' do
 		schema type: :array,
@@ -48,7 +48,7 @@ describe 'RestAPIFurb API' do
     end
 	
 	delete 'Deleta um usuário' do
-      tags 'DELETEs Usuários'
+      tags 'DELETE Usuários'
       produces 'application/json'
       parameter name: :usuario, in: :body, schema: {
         type: :object,
@@ -88,7 +88,7 @@ describe 'RestAPIFurb API' do
   path '/usuarios/{id}' do    
 	
 	get 'Recupera um usuário' do
-      tags 'GETs Usuários'
+      tags 'GET Usuários'
       produces 'application/json'
       parameter name: :id, :in => :path, :type => :integer
 
@@ -156,7 +156,7 @@ describe 'RestAPIFurb API' do
     end
 	
 	delete 'Deleta um usuário' do
-      tags 'DELETEs Usuários'
+      tags 'DELETE Usuários'
       produces 'application/json'
       parameter name: :id, :in => :path, :type => :integer
 
@@ -184,6 +184,53 @@ describe 'RestAPIFurb API' do
           required: [ 'id' ]
         run_test!
       end
+    end	
+	
+  end
+  
+  path '/comandas' do
+	
+	get 'Recupera todas as comandas' do
+      tags 'GET Comandas'
+      produces 'application/json'
+      response '200', 'Comandas encontradas' do
+		schema type: :array,
+		  items: { type: :object,
+			properties: {
+			  id: { type: :integer, },
+			  idusuario: { type: :integer, },
+			  produtos: { type: :string },
+			  valortotal: { type: :string }
+			}
+          }		
+        run_test!
+      end      
+    end
+	
+	post 'Cria uma comanda' do
+      tags 'POST Comandas'
+      consumes 'application/json'
+      parameter name: :comanda, in: :body, schema: {
+        type: :object,
+        properties: {
+          idusuario: { type: :integer },
+          produtos: { type: :string },
+		  valortotal: { type: :number }
+        },
+        required: [ 'idusuario', 'produtos', 'valortotal' ]
+      }
+
+      response '200', 'Comanda criada' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer, },
+            idusuario: { type: :integer },
+			produtos: { type: :string },
+			valortotal: { type: :number }
+          }
+		run_test!
+      end
+      
     end
 	
   end

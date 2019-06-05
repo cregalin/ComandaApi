@@ -9,7 +9,7 @@
       "get": {
         "summary": "Recupera todos os usuários",
         "tags": [
-          "GETs Usuários"
+          "GET Usuários"
         ],
         "produces": [
           "application/json"
@@ -95,7 +95,7 @@
       "delete": {
         "summary": "Deleta um usuário",
         "tags": [
-          "DELETEs Usuários"
+          "DELETE Usuários"
         ],
         "produces": [
           "application/json"
@@ -157,7 +157,7 @@
       "get": {
         "summary": "Recupera um usuário",
         "tags": [
-          "GETs Usuários"
+          "GET Usuários"
         ],
         "produces": [
           "application/json"
@@ -289,7 +289,7 @@
       "delete": {
         "summary": "Deleta um usuário",
         "tags": [
-          "DELETEs Usuários"
+          "DELETE Usuários"
         ],
         "produces": [
           "application/json"
@@ -336,6 +336,98 @@
               "required": [
                 "id"
               ]
+            }
+          }
+        }
+      }
+    },
+    "/comandas": {
+      "get": {
+        "summary": "Recupera todas as comandas",
+        "tags": [
+          "GET Comandas"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Comandas encontradas",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "idusuario": {
+                    "type": "integer"
+                  },
+                  "produtos": {
+                    "type": "string"
+                  },
+                  "valortotal": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria uma comanda",
+        "tags": [
+          "POST Comandas"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "comanda",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idusuario": {
+                  "type": "integer"
+                },
+                "produtos": {
+                  "type": "string"
+                },
+                "valortotal": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "idusuario",
+                "produtos",
+                "valortotal"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comanda criada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "idusuario": {
+                  "type": "integer"
+                },
+                "produtos": {
+                  "type": "string"
+                },
+                "valortotal": {
+                  "type": "number"
+                }
+              }
             }
           }
         }
