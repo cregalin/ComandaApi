@@ -6,10 +6,41 @@
   },
   "paths": {
     "/usuarios": {
+      "get": {
+        "summary": "Recupera todos os usuários",
+        "tags": [
+          "GETs Usuários"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuários encontrados",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Cria um usuário",
         "tags": [
-          "Usuários"
+          "POST Usuários"
         ],
         "consumes": [
           "application/json"
@@ -37,10 +68,87 @@
         ],
         "responses": {
           "200": {
-            "description": "Usuário criado"
+            "description": "Usuário criado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "senha": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
           },
           "400": {
             "description": "Requisição inválida"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta um usuário",
+        "tags": [
+          "DELETEs Usuários"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "usuario",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário removido",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -49,7 +157,7 @@
       "get": {
         "summary": "Recupera um usuário",
         "tags": [
-          "Usuários"
+          "GETs Usuários"
         ],
         "produces": [
           "application/json"
@@ -103,33 +211,131 @@
             }
           }
         }
-      }
-    },
-    "/usuarios/": {
-      "get": {
-        "summary": "Recupera todos os usuários",
+      },
+      "put": {
+        "summary": "Atualiza um usuário",
         "tags": [
-          "Usuários"
+          "PUT Usuários"
         ],
         "produces": [
           "application/json"
         ],
-        "responses": {
-          "200": {
-            "description": "Usuários encontrados",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "usuario",
+            "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "type": "integer"
-                },
                 "email": {
                   "type": "string"
                 },
                 "senha": {
                   "type": "string"
                 }
+              },
+              "required": [
+                "email",
+                "senha"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário atualizado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "senha": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta um usuário",
+        "tags": [
+          "DELETEs Usuários"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário removido",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
             }
           }
         }
