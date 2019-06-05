@@ -28,7 +28,7 @@ describe 'RestAPIFurb API' do
           email: { type: :string },
           senha: { type: :string }
         },
-        required: [ 'email', 'senha' ]
+        required: [ 'usuario' ]
       }
 
       response '200', 'Usuário criado' do
@@ -37,8 +37,7 @@ describe 'RestAPIFurb API' do
             id: { type: :integer, },
             email: { type: :string },
             senha: { type: :string }
-          },
-          required: [ 'id' ]
+          }          
 		run_test!
       end
 
@@ -67,6 +66,10 @@ describe 'RestAPIFurb API' do
 			  }
 			}
           }
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
         run_test!
       end
 
@@ -100,6 +103,10 @@ describe 'RestAPIFurb API' do
             senha: { type: :string }
           },
           required: [ 'id' ]
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
         run_test!
       end
 
@@ -137,7 +144,11 @@ describe 'RestAPIFurb API' do
             email: { type: :string },
             senha: { type: :string }
           },
-          required: [ 'id' ]        
+          required: [ 'id' ]
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
         run_test!
       end
 
@@ -169,6 +180,10 @@ describe 'RestAPIFurb API' do
 			  }
 			}
           }
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
         run_test!
       end
 
@@ -230,8 +245,131 @@ describe 'RestAPIFurb API' do
           }
 		run_test!
       end
+	  
+	  response '400', 'Requisição inválida' do
+        run_test!
+      end
       
     end
+	
+  end
+  
+  path '/comandas/{id}' do
+	
+	get 'Recupera uma comanda' do
+      tags 'GET Comandas'
+      produces 'application/json'
+      parameter name: :id, :in => :path, :type => :integer
+
+      response '200', 'Comanda encontrada' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer, },
+            idusuario: { type: :integer },
+			produtos: { type: :string },
+			valortotal: { type: :number }
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
+        run_test!
+      end
+
+      response '404', 'Comanda não encontrada' do
+		schema type: :object,
+          properties: {
+            error: { type: :object, 
+			  properties: {
+				text: { type: :string }
+			  }
+			}
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+    end
+	
+	put 'Atualiza uma comanda' do
+      tags 'PUT Comanda'
+      produces 'application/json'
+      parameter name: :id, :in => :path, :type => :integer
+
+	  parameter name: :comanda, in: :body, schema: {
+        type: :object,
+        properties: {
+          idusuario: { type: :integer },
+		  produtos: { type: :string },
+		  valortotal: { type: :number }
+        },
+        required: [ 'idusuario', 'produtos', 'valortotal' ]
+      }
+	  
+      response '200', 'Comanda atualizada' do
+        schema type: :object,
+          properties: {
+            idusuario: { type: :integer },
+		    produtos: { type: :string },
+		    valortotal: { type: :number }
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
+        run_test!
+      end
+
+      response '404', 'Comanda não encontrada' do
+		schema type: :object,
+          properties: {
+            error: { type: :object, 
+			  properties: {
+				text: { type: :string }
+			  }
+			}
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+    end
+	
+	delete 'Deleta uma comanda' do
+      tags 'DELETE Comanda'
+      produces 'application/json'
+      parameter name: :id, :in => :path, :type => :integer
+
+      response '200', 'Comanda removida' do
+        schema type: :object,
+          properties: {
+            success: { type: :object, 
+			  properties: {
+				text: { type: :string }
+			  }
+			}
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+	  
+	  response '400', 'Requisição inválida' do
+        run_test!
+      end
+
+      response '404', 'Comanda não encontrada' do
+		schema type: :object,
+          properties: {
+            error: { type: :object, 
+			  properties: {
+				text: { type: :string }
+			  }
+			}
+          },
+          required: [ 'id' ]
+        run_test!
+      end
+    end	
 	
   end
   

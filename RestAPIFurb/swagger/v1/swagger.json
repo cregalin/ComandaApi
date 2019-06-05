@@ -60,8 +60,7 @@
                 }
               },
               "required": [
-                "email",
-                "senha"
+                "usuario"
               ]
             }
           }
@@ -81,10 +80,7 @@
                 "senha": {
                   "type": "string"
                 }
-              },
-              "required": [
-                "id"
-              ]
+              }
             }
           },
           "400": {
@@ -133,6 +129,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Requisição inválida"
           },
           "404": {
             "description": "Usuário não encontrado",
@@ -190,6 +189,9 @@
                 "id"
               ]
             }
+          },
+          "400": {
+            "description": "Requisição inválida"
           },
           "404": {
             "description": "Usuário não encontrado",
@@ -265,6 +267,9 @@
               ]
             }
           },
+          "400": {
+            "description": "Requisição inválida"
+          },
           "404": {
             "description": "Usuário não encontrado",
             "schema": {
@@ -318,6 +323,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Requisição inválida"
           },
           "404": {
             "description": "Usuário não encontrado",
@@ -428,6 +436,219 @@
                   "type": "number"
                 }
               }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          }
+        }
+      }
+    },
+    "/comandas/{id}": {
+      "get": {
+        "summary": "Recupera uma comanda",
+        "tags": [
+          "GET Comandas"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comanda encontrada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "idusuario": {
+                  "type": "integer"
+                },
+                "produtos": {
+                  "type": "string"
+                },
+                "valortotal": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "404": {
+            "description": "Comanda não encontrada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma comanda",
+        "tags": [
+          "PUT Comanda"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "comanda",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idusuario": {
+                  "type": "integer"
+                },
+                "produtos": {
+                  "type": "string"
+                },
+                "valortotal": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "idusuario",
+                "produtos",
+                "valortotal"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comanda atualizada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idusuario": {
+                  "type": "integer"
+                },
+                "produtos": {
+                  "type": "string"
+                },
+                "valortotal": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "404": {
+            "description": "Comanda não encontrada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma comanda",
+        "tags": [
+          "DELETE Comanda"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comanda removida",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "404": {
+            "description": "Comanda não encontrada",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id"
+              ]
             }
           }
         }
