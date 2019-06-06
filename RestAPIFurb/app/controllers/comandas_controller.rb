@@ -38,7 +38,6 @@ class ComandasController < ActionController::API
 
     def destroy
         comanda = Comanda.find(params[:id])  
-        debugger
         if comanda.present?
            comanda.destroy
            render json: { success:{ text: "comanda removida" }}, status: :ok  

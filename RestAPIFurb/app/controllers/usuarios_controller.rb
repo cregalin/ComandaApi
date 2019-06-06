@@ -1,6 +1,5 @@
 class UsuariosController < ApplicationController   
     def index
-        debugger
         usuarios = Usuario.all
         render json: usuarios, status: :ok
     end
