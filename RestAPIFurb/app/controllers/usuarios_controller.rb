@@ -1,10 +1,11 @@
 class UsuariosController < ApplicationController   
     def index
+        debugger
         usuarios = Usuario.all
         render json: usuarios, status: :ok
     end
 
-	def show
+    def show
         usuario = Usuario.find(params[:id])
         render json: usuario, status: :ok
 
@@ -15,9 +16,9 @@ class UsuariosController < ApplicationController
     def create
         usuario = Usuario.new(usuario_params)
         if usuario.save
-           render json: usuario, status: :ok
+            render json: usuario, status: :ok
         else
-           render json: usuario.errors, status: :unprocessable_entity
+            render json: usuario.errors, status: :unprocessable_entity
         end
     end
 
@@ -34,15 +35,14 @@ class UsuariosController < ApplicationController
     end
 
     def destroy
-        find_by = params[:id].present? ? {id: params[:id]} : {email: params[:email] }
+        find_by = params[:id].present? ? { id: params[:id] } : { email: params[:email] }
         usuario = Usuario.find_by(find_by)  
         if usuario.present?
-           usuario.destroy
-           render json: { success:{ text: "Usuário removido" }}, status: :ok  
-        end
-
-        rescue ActiveRecord::RecordNotFound
+            usuario.destroy
+            render json: { success:{ text: "Usuário removido" } }, status: :ok  
+        else
             render json: { error: { text: "Usuário não encontrado" } }, status: :not_found  
+        end
     end
     
     private
