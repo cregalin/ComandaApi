@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/usuarios": {
+    "/RestApiFurb/usuarios": {
       "get": {
         "summary": "Recupera todos os usuários",
         "tags": [
@@ -152,7 +152,7 @@
         }
       }
     },
-    "/usuarios/{id}": {
+    "/RestApiFurb/usuarios/{id}": {
       "get": {
         "summary": "Recupera um usuário",
         "tags": [
@@ -349,7 +349,7 @@
         }
       }
     },
-    "/comandas": {
+    "/RestApiFurb/comandas": {
       "get": {
         "summary": "Recupera todas as comandas",
         "tags": [
@@ -444,7 +444,7 @@
         }
       }
     },
-    "/comandas/{id}": {
+    "/RestApiFurb/comandas/{id}": {
       "get": {
         "summary": "Recupera uma comanda",
         "tags": [

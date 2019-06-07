@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 describe 'RestAPIFurb API' do
   
-  path '/usuarios' do
+  path '/RestApiFurb/usuarios' do
 	get 'Recupera todos os usuários' do
       tags 'GET Usuários'
       produces 'application/json'
@@ -88,7 +88,7 @@ describe 'RestAPIFurb API' do
 	
   end
   
-  path '/usuarios/{id}' do    
+  path '/RestApiFurb/usuarios/{id}' do    
 	
 	get 'Recupera um usuário' do
       tags 'GET Usuários'
@@ -203,7 +203,7 @@ describe 'RestAPIFurb API' do
 	
   end
   
-  path '/comandas' do
+  path '/RestApiFurb/comandas' do
 	
 	get 'Recupera todas as comandas' do
       tags 'GET Comandas'
@@ -254,7 +254,7 @@ describe 'RestAPIFurb API' do
 	
   end
   
-  path '/comandas/{id}' do
+  path '/RestApiFurb/comandas/{id}' do
 	
 	get 'Recupera uma comanda' do
       tags 'GET Comandas'
