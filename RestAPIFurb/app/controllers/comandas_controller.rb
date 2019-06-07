@@ -13,8 +13,8 @@ class ComandasController < ActionController::API
     end
 
     def create
-        comanda_params.merge(usuario_id: params[:idusuario])
-        comanda = Comanda.new(comanda_params)
+        comanda = Comanda.new(comanda_params.merge(usuario_id: params[:idusuario]))
+
         if comanda.save
             render json: { idusuario: comanda[:usuario_id], produtos: comanda[:produtos], valortotal: comanda[:valortotal] }, status: :ok
         else
@@ -27,7 +27,7 @@ class ComandasController < ActionController::API
         comanda_update = comanda_params.merge(usuario_id: params[:idusuario])
         
         if comanda.update_attributes(comanda_update)
-            render json: { idusuario: comanda[:usuario_id], produtos: comanda[:produtos], valortotal: comanda[:valortotal] }, status: :ok
+            render json: { id: comanda[:id], idusuario: comanda[:usuario_id], produtos: comanda[:produtos], valortotal: comanda[:valortotal] }, status: :ok
         else 
             render json: { error: { text: "Comanda não atualizada", data: comanda.errors } }, status: :unprocessable_entity
         end   
