@@ -1,4 +1,4 @@
-class ComandasController < ActionController::API  
+class ComandasController < ApplicationController
     def index
         comandas = Comanda.all
         render json: comandas, status: :ok

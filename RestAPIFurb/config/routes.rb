@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   
   scope '/RestApiFurb' do
-    resources :usuarios
-    resources :comandas
+    resources :usuarios, :comandas
     delete 'usuarios/(:id)',  to: 'usuarios#destroy'
+    post 'authenticate', to: 'authentication#authenticate'
   end
 end
