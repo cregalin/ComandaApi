@@ -1,6 +1,36 @@
 require 'swagger_helper'
 
 describe 'RestAPIFurb API' do
+
+  path '/RestApiFurb/authenticate' do
+    post 'Gera token para ser enviado nas demais requisições' do
+      tags 'POST Authenticate'
+      consumes 'application/json'
+      parameter name: :authenticate, in: :body, schema: {
+        type: :object,
+        properties: {
+          email: { type: :string },
+          senha: { type: :string }
+        },
+        required: [ 'authenticate' ]
+      }
+
+      response '200', 'Token gerado' do
+        schema type: :object,
+          properties: {
+            auth_token: { type: :string }
+          }          
+    run_test!
+      end
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
+
+      response '400', 'Requisição inválida' do
+        run_test!
+      end
+    end
+  end
   
   path '/RestApiFurb/usuarios' do
 	get 'Recupera todos os usuários' do
@@ -16,7 +46,13 @@ describe 'RestAPIFurb API' do
 			}
           }		
         run_test!
-      end      
+      end 
+      response '401', 'Não autorizado' do
+        run_test!
+      end    
+      response '401', 'invalid credentials' do
+        run_test!
+      end 
     end
 	
 	post 'Cria um usuário' do
@@ -44,6 +80,9 @@ describe 'RestAPIFurb API' do
       response '400', 'Requisição inválida' do
         run_test!
       end
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
     end
 	
 	delete 'Deleta um usuário' do
@@ -68,8 +107,10 @@ describe 'RestAPIFurb API' do
           }
         run_test!
       end
-	  
-	  response '400', 'Requisição inválida' do
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
+	    response '400', 'Requisição inválida' do
         run_test!
       end
 
@@ -105,7 +146,9 @@ describe 'RestAPIFurb API' do
           required: [ 'id' ]
         run_test!
       end
-	  
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
 	  response '400', 'Requisição inválida' do
         run_test!
       end
@@ -147,7 +190,9 @@ describe 'RestAPIFurb API' do
           required: [ 'id' ]
         run_test!
       end
-	  
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
 	  response '400', 'Requisição inválida' do
         run_test!
       end
@@ -182,7 +227,9 @@ describe 'RestAPIFurb API' do
           }
         run_test!
       end
-	  
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
 	  response '400', 'Requisição inválida' do
         run_test!
       end
@@ -219,7 +266,10 @@ describe 'RestAPIFurb API' do
 			}
           }		
         run_test!
-      end      
+      end  
+      response '401', 'Não autorizado' do
+        run_test!
+      end     
     end
 	
 	post 'Cria uma comanda' do
@@ -249,6 +299,9 @@ describe 'RestAPIFurb API' do
 	  response '400', 'Requisição inválida' do
         run_test!
       end
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
       
     end
 	
@@ -276,6 +329,9 @@ describe 'RestAPIFurb API' do
 	  response '400', 'Requisição inválida' do
         run_test!
       end
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
 
       response '404', 'Comanda não encontrada' do
 		schema type: :object,
@@ -316,6 +372,9 @@ describe 'RestAPIFurb API' do
           required: [ 'id' ]
         run_test!
       end
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
 	  
 	  response '400', 'Requisição inválida' do
         run_test!
@@ -356,7 +415,9 @@ describe 'RestAPIFurb API' do
 	  response '400', 'Requisição inválida' do
         run_test!
       end
-
+      response '401', 'Não autorizado' do
+        run_test!
+      end 
       response '404', 'Comanda não encontrada' do
 		schema type: :object,
           properties: {

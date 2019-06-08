@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190608033153) do
 
   create_table "usuarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", limit: 50
-    t.string "senha", limit: 100
+    t.string "password_digest", limit: 100
   end
 
   add_foreign_key "comandas", "usuarios"

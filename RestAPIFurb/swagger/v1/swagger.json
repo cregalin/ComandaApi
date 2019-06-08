@@ -5,6 +5,56 @@
     "version": "v1"
   },
   "paths": {
+    "/RestApiFurb/authenticate": {
+      "post": {
+        "summary": "Gera token para ser enviado nas demais requisições",
+        "tags": [
+          "POST Authenticate"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authenticate",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "senha": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "authenticate"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token gerado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "auth_token": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          }
+        }
+      }
+    },
     "/RestApiFurb/usuarios": {
       "get": {
         "summary": "Recupera todos os usuários",
@@ -34,6 +84,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "invalid credentials"
           }
         }
       },
@@ -85,6 +138,9 @@
           },
           "400": {
             "description": "Requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
           }
         }
       },
@@ -129,6 +185,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Não autorizado"
           },
           "400": {
             "description": "Requisição inválida"
@@ -189,6 +248,9 @@
                 "id"
               ]
             }
+          },
+          "401": {
+            "description": "Não autorizado"
           },
           "400": {
             "description": "Requisição inválida"
@@ -267,6 +329,9 @@
               ]
             }
           },
+          "401": {
+            "description": "Não autorizado"
+          },
           "400": {
             "description": "Requisição inválida"
           },
@@ -323,6 +388,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Não autorizado"
           },
           "400": {
             "description": "Requisição inválida"
@@ -381,6 +449,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Não autorizado"
           }
         }
       },
@@ -440,6 +511,9 @@
           },
           "400": {
             "description": "Requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
           }
         }
       }
@@ -487,6 +561,9 @@
           },
           "400": {
             "description": "Requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
           },
           "404": {
             "description": "Comanda não encontrada",
@@ -569,6 +646,9 @@
               ]
             }
           },
+          "401": {
+            "description": "Não autorizado"
+          },
           "400": {
             "description": "Requisição inválida"
           },
@@ -631,6 +711,9 @@
           },
           "400": {
             "description": "Requisição inválida"
+          },
+          "401": {
+            "description": "Não autorizado"
           },
           "404": {
             "description": "Comanda não encontrada",
