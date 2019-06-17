@@ -54,5 +54,5 @@ rails s
 
 Prontinho, agora é só começar a fazer requisições para os métodos diponíveis na API. :bowtie:
 
-Link para a documentação(Ainda não está pronta :squirrel:) 
+A documentação encontra-se em localhost:8080/RestApiFurb/api-docs :squirrel:
 
