@@ -41,7 +41,10 @@ development:
   database: <sua database>
   
 ```
-
+4. Bundle
+```
+bundle install
+```
 3. Rodar migrations para a crição das tabelas na database:
 ```
 rake db:migrate
